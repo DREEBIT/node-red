@@ -67,12 +67,17 @@ var RED = (function() {
     }
 
     function loadFlows() {
+
+        var hash = window.location.hash;
+        hash = hash.replace("#","");
+        hash = hash.replace("/","");
+
         $.ajax({
             headers: {
                 "Accept":"application/json"
             },
             cache: false,
-            url: 'api/nodered/flows/'+window.location.hash,
+            url: 'api/nodered/flows/'+hash,
             success: function(nodes) {
                 RED.nodes.import(nodes);
                 RED.nodes.dirty(false);
