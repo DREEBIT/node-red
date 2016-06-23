@@ -72,7 +72,7 @@ var RED = (function() {
                 "Accept":"application/json"
             },
             cache: false,
-            url: 'flows',
+            url: 'api/nodered/flows/'+window.location.hash,
             success: function(nodes) {
                 RED.nodes.import(nodes);
                 RED.nodes.dirty(false);
