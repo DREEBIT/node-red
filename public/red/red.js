@@ -69,12 +69,12 @@ var RED = (function() {
     function loadFlows() {
 
         var url = 'flows';
-        // var hash = window.location.hash;
-        // if (hash){
-        //     hash = hash.replace("#","");
-        //     hash = hash.replace("/","");
-        //     url = '../api/nodered/flows/'+hash;
-        // }
+        var hash = window.location.hash;
+        if (hash){
+            hash = hash.replace("#","");
+            hash = hash.replace("/","");
+            url = '../api/nodered/flows/'+hash;
+        }
 
 
         $.ajax({
