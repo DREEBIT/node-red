@@ -68,16 +68,21 @@ var RED = (function() {
 
     function loadFlows() {
 
-        var hash = window.location.hash;
-        hash = hash.replace("#","");
-        hash = hash.replace("/","");
+        var url = 'flows';
+        // var hash = window.location.hash;
+        // if (hash){
+        //     hash = hash.replace("#","");
+        //     hash = hash.replace("/","");
+        //     url = '../api/nodered/flows/'+hash;
+        // }
+
 
         $.ajax({
             headers: {
                 "Accept":"application/json"
             },
             cache: false,
-            url: '../api/nodered/flows/'+hash,
+            url: url,
             success: function(nodes) {
                 RED.nodes.import(nodes);
                 RED.nodes.dirty(false);
@@ -2425,6 +2430,8 @@ RED.deploy = (function() {
     }
 
     function save(force) {
+
+
         if (RED.nodes.dirty()) {
             //$("#debug-tab-clear").click();  // uncomment this to auto clear debug on deploy
 
@@ -2502,6 +2509,7 @@ RED.deploy = (function() {
             $("#btn-deploy-icon").addClass('spinner');
             RED.nodes.dirty(false);
 
+
             $.ajax({
                 url:"flows",
                 type: "POST",
@@ -2536,6 +2544,8 @@ RED.deploy = (function() {
                 RED.history.markAllDirty();
                 RED.view.redraw();
                 RED.events.emit("deploy");
+
+
             }).fail(function(xhr,textStatus,err) {
                 RED.nodes.dirty(true);
                 if (xhr.status === 401) {

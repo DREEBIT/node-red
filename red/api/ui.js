@@ -34,7 +34,7 @@ function nodeIconDir(dir) {
 
 module.exports = {
     init: function(runtime) {
-        editorTemplate = fs.readFileSync(path.join(templateDir,"index.mst"),"utf8");
+        editorTemplate = fs.readFileSync(path.join(templateDir,"dreebit-cms.mst"),"utf8");
         Mustache.parse(editorTemplate);
         // TODO: this allows init to be called multiple times without
         //       registering multiple instances of the listener.

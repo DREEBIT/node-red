@@ -49,7 +49,7 @@ function start() {
     if (!settings.disableEditor) {
         Users.default().then(function(anonymousUser) {
             var webSocketKeepAliveTime = settings.webSocketKeepAliveTime || 15000;
-            var path = settings.httpAdminRoot || "/";
+            var path = settings.websocketRoot || settings.httpAdminRoot || "/";
             path = (path.slice(0,1) != "/" ? "/":"") + path + (path.slice(-1) == "/" ? "":"/") + "comms";
             wsServer = new ws.Server({
                 server:server,
